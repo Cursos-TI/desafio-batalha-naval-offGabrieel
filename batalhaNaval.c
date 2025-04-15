@@ -37,6 +37,19 @@ int main() {
     tabuleiro[8][2] = "3";
     
     
+    // Posição navio diagonal 1
+    for (int i = 5; i < 8; i++) {
+        tabuleiro[7 - i][i] = "3";
+    }
+
+    // Posição navio diagonal 2
+    for (int i = 5; i < 8; i++) {
+        tabuleiro[i][9 + i] = "3";
+    }
+    
+    
+    
+    
     // Imprime o tabuleiro.
     
     printf("        ** TABULEIRO **\n");
