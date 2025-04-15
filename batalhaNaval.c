@@ -24,8 +24,23 @@ int main() {
         
     };
     
+    // Posição navio horizontal 1
+    
+    tabuleiro[1][1] = "3"; 
+    tabuleiro[1][2] = "3"; 
+    tabuleiro[1][3] = "3";
+    
+    // Posição navio vertical 1
+    
+    tabuleiro[6][2] = "3"; 
+    tabuleiro[7][2] = "3"; 
+    tabuleiro[8][2] = "3";
+    
+    
+    // Imprime o tabuleiro.
+    
     printf("        ** TABULEIRO **\n");
-    printf("  ");
+    printf("   ");
     for (char letras = 'A'; letras <= 'J'; letras++) {
         printf(" %2c", letras);
     }
@@ -37,12 +52,12 @@ int main() {
         
         for (int j = 0; j < 10; j++) {
             printf(" ");
-            printf("%s ", tabuleiro[i][j]);
+            printf(" %s", tabuleiro[i][j]);
         }
         printf("\n");
     }
 
-    
+
     // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
     // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
     // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
