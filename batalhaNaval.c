@@ -9,6 +9,8 @@ int main() {
     // Sugestão: Posicione dois navios no tabuleiro, um verticalmente e outro horizontalmente.
     // Sugestão: Utilize `printf` para exibir as coordenadas de cada parte dos navios.
     
+    int espacoLivre, espacoLivre2;
+    
     char * tabuleiro [10][10] = {
         
         {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0"},
@@ -26,29 +28,64 @@ int main() {
     
     // Posição navio horizontal 1
     
-    tabuleiro[1][1] = "3"; 
-    tabuleiro[1][2] = "3"; 
-    tabuleiro[1][3] = "3";
+    if (tabuleiro[1][1] == "0" && tabuleiro[1][2] == "0" && tabuleiro[1][3] == "0") {
+       
+        tabuleiro[1][1] = "3";
+        tabuleiro[1][2] = "3";
+        tabuleiro[1][3] = "3";
+
+    } else {
+        printf("Posicionamento inválido!\n");
+    }
     
     // Posição navio vertical 1
     
-    tabuleiro[6][2] = "3"; 
-    tabuleiro[7][2] = "3"; 
-    tabuleiro[8][2] = "3";
+    if (tabuleiro[6][2] == "0" && tabuleiro[7][2] == "0" && tabuleiro[8][2] == "0") {
+        
+        tabuleiro[6][2] = "3";
+        tabuleiro[7][2] = "3";
+        tabuleiro[8][2] = "3";
+
+    } else {
+        printf("Posicionamento inválido!\n");
+    }
     
-    
+    // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
+    // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
+    // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
+
     // Posição navio diagonal 1
-    for (int i = 5; i < 8; i++) {
-        tabuleiro[7 - i][i] = "3";
+    espacoLivre = 1;
+    for (int i = 0; i < 3; i++) {
+        if (tabuleiro[i][7 - i] != "0") {
+            espacoLivre = 0;
+            break;
+        }
+    }
+    if (espacoLivre) {
+        for (int i = 0; i < 3; i++) {
+            tabuleiro[i][8 - i] = "3";
+        }
+    } else {
+        printf("Posicionamento inválido!\n");
     }
 
     // Posição navio diagonal 2
-    for (int i = 5; i < 8; i++) {
-        tabuleiro[i][9 + i] = "3";
+    
+    espacoLivre2 = 1;
+    for (int i = 4; i < 7; i++) {
+        if (tabuleiro[i][9 + i] != "0") {
+            espacoLivre2 = 0;
+            break;
+        }
     }
-    
-    
-    
+    if (espacoLivre2) {
+        for (int i = 4; i < 7; i++) {
+            tabuleiro[i][9 + i] = "3";
+        }
+    } else {
+        printf("Posicionamento inválido!\n");
+    }
     
     // Imprime o tabuleiro.
     
@@ -69,12 +106,6 @@ int main() {
         }
         printf("\n");
     }
-
-
-    // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
-    // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
-    // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
-    // Sugestão: Exiba o tabuleiro completo no console, mostrando 0 para posições vazias e 3 para posições ocupadas.
 
     // Nível Mestre - Habilidades Especiais com Matrizes
     // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
