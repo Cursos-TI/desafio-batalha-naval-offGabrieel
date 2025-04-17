@@ -1,110 +1,84 @@
 #include <stdio.h>
 
-// Desafio Batalha Naval - MateCheck
-// Este código inicial serve como base para o desenvolvimento do sistema de Batalha Naval.
+    // Desafio Batalha Naval - MateCheck
+    // Este código inicial serve como base para o desenvolvimento do sistema de Batalha Naval.
+
+#define LINHAS 10
+#define COLUNAS 10
 
 int main() {
+    
     // Nível Novato - Posicionamento dos Navios
     // Sugestão: Declare uma matriz bidimensional para representar o tabuleiro (Ex: int tabuleiro[5][5];).
     // Sugestão: Posicione dois navios no tabuleiro, um verticalmente e outro horizontalmente.
     // Sugestão: Utilize `printf` para exibir as coordenadas de cada parte dos navios.
     
-    int espacoLivre, espacoLivre2;
+    int matriz[LINHAS][COLUNAS];
     
-    char * tabuleiro [10][10] = {
-        
-        {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0"},
-        {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0"},
-        {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0"},
-        {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0"},
-        {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0"},
-        {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0"},
-        {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0"},
-        {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0"},
-        {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0"},
-        {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0"}
-        
-    };
+    // Inicializa a matriz do tabuleiro = 0.
     
-    // Posição navio horizontal 1
-    
-    if (tabuleiro[1][1] == "0" && tabuleiro[1][2] == "0" && tabuleiro[1][3] == "0") {
-       
-        tabuleiro[1][1] = "3";
-        tabuleiro[1][2] = "3";
-        tabuleiro[1][3] = "3";
-
-    } else {
-        printf("Posicionamento inválido!\n");
+    for (int i = 0; i < LINHAS; i++) {
+        for (int j = 0; j < COLUNAS; j++) {
+            matriz[i][j] = 0;
+        }
     }
-    
-    // Posição navio vertical 1
-    
-    if (tabuleiro[6][2] == "0" && tabuleiro[7][2] == "0" && tabuleiro[8][2] == "0") {
-        
-        tabuleiro[6][2] = "3";
-        tabuleiro[7][2] = "3";
-        tabuleiro[8][2] = "3";
 
+    // Posição navio horizontal.
+    
+    if (matriz[5][5] == 0 && matriz[5][6] == 0 && matriz[5][7] == 0) {
+        matriz[5][5] = 3;
+        matriz[5][6] = 3;
+        matriz[5][7] = 3;
     } else {
-        printf("Posicionamento inválido!\n");
+        printf("Posicionamento horizontal inválido!\n");
+    }
+
+    // Posição navio vertical.
+    
+    if (matriz[6][2] == 0 && matriz[7][2] == 0 && matriz[8][2] == 0) {
+        matriz[6][2] = 3;
+        matriz[7][2] = 3;
+        matriz[8][2] = 3;
+    } else {
+        printf("Posicionamento vertical inválido!\n");
     }
     
     // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
     // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
     // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
 
-    // Posição navio diagonal 1
-    espacoLivre = 1;
+    // Posição navio diagonal 1.
+    
+    int espacoLivre = 1;
     for (int i = 0; i < 3; i++) {
-        if (tabuleiro[i][7 - i] != "0") {
+        if (matriz[i][7 - i] != 0) {
             espacoLivre = 0;
             break;
         }
     }
     if (espacoLivre) {
         for (int i = 0; i < 3; i++) {
-            tabuleiro[i][8 - i] = "3";
+            matriz[i][7 - i] = 3;
         }
     } else {
-        printf("Posicionamento inválido!\n");
+        printf("Posicionamento diagonal 1 inválido!\n");
     }
 
-    // Posição navio diagonal 2
+    // Posição navio diagonal 2.
     
-    espacoLivre2 = 1;
-    for (int i = 4; i < 7; i++) {
-        if (tabuleiro[i][9 + i] != "0") {
-            espacoLivre2 = 0;
+    espacoLivre = 1;
+    for (int i = 0; i < 3; i++) {
+        if (matriz[1 + i][i] != 0) {
+            espacoLivre = 0;
             break;
         }
     }
-    if (espacoLivre2) {
-        for (int i = 4; i < 7; i++) {
-            tabuleiro[i][9 + i] = "3";
+    if (espacoLivre) {
+        for (int i = 0; i < 3; i++) {
+            matriz[1 + i][i] = 3;
         }
     } else {
-        printf("Posicionamento inválido!\n");
-    }
-    
-    // Imprime o tabuleiro.
-    
-    printf("        ** TABULEIRO **\n");
-    printf("   ");
-    for (char letras = 'A'; letras <= 'J'; letras++) {
-        printf(" %2c", letras);
-    }
-    printf("\n");
-    
-    for (int i = 0; i < 10; i++) {
-        
-        printf("%2d ", i + 1);
-        
-        for (int j = 0; j < 10; j++) {
-            printf(" ");
-            printf(" %s", tabuleiro[i][j]);
-        }
-        printf("\n");
+        printf("Posicionamento diagonal 2 inválido!\n");
     }
 
     // Nível Mestre - Habilidades Especiais com Matrizes
@@ -127,6 +101,23 @@ int main() {
     // 0 0 1 0 0
     // 1 1 1 1 1
     // 0 0 1 0 0
+    
+    // Imprime o tabuleiro
+    
+    printf("\n        ** TABULEIRO **\n");
+    printf("   ");
+    for (char letras = 'A'; letras < 'A' + COLUNAS; letras++) {
+        printf(" %2c", letras);
+    }
+    printf("\n");
+
+    for (int i = 0; i < LINHAS; i++) {
+        printf("%2d ", i + 1);
+        for (int j = 0; j < COLUNAS; j++) {
+            printf("  %d", matriz[i][j]);
+        }
+        printf("\n");
+    }
 
     return 0;
 }
