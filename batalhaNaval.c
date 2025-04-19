@@ -158,12 +158,13 @@ int main() {
 
     int escolha;
     
-        printf("\n        ** TABULEIRO **\n");
-        printf("   ");
+    printf("\n        ** TABULEIRO **\n");
+    printf("   ");
     
     for (char letras = 'A'; letras < 'A' + COLUNAS; letras++) {
         printf(" %2c", letras);
     }
+
     printf("\n");
     
     for (int i = 0; i < LINHAS; i++) {
@@ -173,6 +174,7 @@ int main() {
         }
         printf("\n");
     }
+
     printf("\n");
     
     // Menu de interação parar selecionar habilidade que deseja visualizar no tabuleiro (ponto de habilidade definido pelo código).
@@ -186,24 +188,27 @@ int main() {
 
     switch (escolha) {
         case 1: 
-            int linha = 4, coluna = 6;
-            aplicarCone(matriz, linha, coluna);
+
+            int linha1 = 4, coluna1 = 6;
+            aplicarCone(matriz, linha1, coluna1);
             
             break;
         case 2:
-            
+
             int linha2 = 7, coluna2 = 2;
             aplicarCruz(matriz, linha2, coluna2);
             
             break;
         case 3:
-            
+
             int linha3 = 2, coluna3 = 1;
             aplicarOctaedro(matriz, linha3, coluna3);
             
             break;
         default:
+
             printf("Opção inválida!\n");
+
             break;
     }
 
@@ -211,6 +216,7 @@ int main() {
 
     printf("\n        ** TABULEIRO **\n");
     printf("   ");
+    
     for (char letras = 'A'; letras < 'A' + COLUNAS; letras++) {
         printf(" %2c", letras);
     }
