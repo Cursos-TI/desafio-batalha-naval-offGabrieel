@@ -157,6 +157,7 @@ int main() {
     // Imprime o tabuleiro com o posicionamento dos návios. (posicionamentos definidos pelo código).
 
     int escolha;
+    int finalizar;
     
     printf("\n        ** TABULEIRO **\n");
     printf("   ");
@@ -178,6 +179,8 @@ int main() {
     printf("\n");
     
     // Menu de interação parar selecionar habilidade que deseja visualizar no tabuleiro (ponto de habilidade definido pelo código).
+    
+    do{
     
     printf("Escolha um poder para visualizar no tabuleiro:\n");
     printf("1 - Cone\n");
@@ -229,6 +232,17 @@ int main() {
         }
         printf("\n");
     }
+    
+    // Implementação de sistema de repetição/finalização.
+    
+        printf("\n");
+        printf("Deseja visualizar outra habilidade?\n");
+        printf("1. SIM.\n");
+        printf("2. NÃO.\n");
+        scanf(" %d", &finalizar);
+    
+    }while (finalizar == 1 );
+        printf("Programa finalizado!");
 
     return 0;
 }
